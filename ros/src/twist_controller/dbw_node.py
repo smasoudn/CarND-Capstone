@@ -108,6 +108,8 @@ class DBWNode(object):
                 if self.desired_velocity and self.current_velocity:
                     throttle, brake, steering = self.controller.control(self.desired_velocity, self.current_velocity, self.dt)
                     self.publish(throttle, brake, steering)
+            else:
+                self.controller.reset()
             self.desired_velocity = None
             rate.sleep()
 

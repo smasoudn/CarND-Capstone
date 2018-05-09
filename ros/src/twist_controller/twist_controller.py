@@ -34,7 +34,6 @@ class Controller(object):
         self.lowpass_filter = LowPassFilter(tau=0.5, ts=0.1)
 
 
-
     def control(self, twist, current_velocity, dt):
         # TODO: Change the arg, kwarg list to suit your needs
         # Return throttle, brake, steer
@@ -64,6 +63,10 @@ class Controller(object):
                 throttle = acceleration
 
         return throttle, brake, steer
+
+
+    def reset(self):
+        self.velocity_controller.reset()
 
     def calc_torque(self, acceleration):
 
